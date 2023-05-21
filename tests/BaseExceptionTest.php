@@ -63,7 +63,8 @@ class BaseExceptionTest extends TestCase
         $exception = new BaseException();
         $context = ['key' => 'value'];
 
-        $exception->setContext($context);
+        $chain = $exception->setContext($context);
+        $this->assertSame($exception, $chain);
         $this->assertEquals($context, $exception->getContext());
 
         $newContext = ['newKey' => 'newValue'];
@@ -80,7 +81,8 @@ class BaseExceptionTest extends TestCase
         $this->assertEquals($context, $exception->getContext());
 
         $newContext = ['key2' => 'value2'];
-        $exception->updateContext($newContext);
+        $chain = $exception->updateContext($newContext);
+        $this->assertSame($exception, $chain);
         $expected = [
             'key1' => 'value1',
             'key2' => 'value2'
@@ -111,7 +113,8 @@ class BaseExceptionTest extends TestCase
         $exception = new BaseException();
         $extras = ['key' => 'value'];
 
-        $exception->setExtras($extras);
+        $chain = $exception->setExtras($extras);
+        $this->assertSame($exception, $chain);
         $this->assertEquals($extras, $exception->getExtras());
 
         $newExtras = ['newKey' => 'newValue'];
@@ -128,7 +131,8 @@ class BaseExceptionTest extends TestCase
         $this->assertEquals($extras, $exception->getExtras());
 
         $newExtras = ['key2' => 'value2'];
-        $exception->updateExtras($newExtras);
+        $chain = $exception->updateExtras($newExtras);
+        $this->assertSame($exception, $chain);
         $expected = [
             'key1' => 'value1',
             'key2' => 'value2'
@@ -150,7 +154,8 @@ class BaseExceptionTest extends TestCase
         $this->assertEquals(BaseException::$defaultFriendlyMessage, $exception->getFriendlyMessage());
 
         $customMessage = 'This is a custom error message.';
-        $exception->setFriendlyMessage($customMessage);
+        $chain = $exception->setFriendlyMessage($customMessage);
+        $this->assertSame($exception, $chain);
         $this->assertEquals($customMessage, $exception->getFriendlyMessage());
 
         $updatedMessage = 'This is a updated error message.';
@@ -164,7 +169,8 @@ class BaseExceptionTest extends TestCase
         $this->assertEquals(BaseException::$defaultStatusCode, $exception->getStatusCode());
 
         $customStatusCode = 404;
-        $exception->setStatusCode($customStatusCode);
+        $chain = $exception->setStatusCode($customStatusCode);
+        $this->assertSame($exception, $chain);
         $this->assertEquals($customStatusCode, $exception->getStatusCode());
 
         $newStatusCode = 400;

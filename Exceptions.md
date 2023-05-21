@@ -10,9 +10,9 @@
     - [Forbidden](#forbidden)
       - [SecurityForbidden](#securityforbidden)
     - [NotFound](#notfound)
-    - [Unauthorization \*](#unauthorization-)
+    - [Unauthorized](#unauthorized)
   - [ServerError](#servererror)
-    - [FatalError \*](#fatalerror-)
+    - [FatalError](#fatalerror)
     - [NotImplemented](#notimplemented)
     - [ProgramError](#programerror)
     - [ServiceError](#serviceerror)
@@ -43,9 +43,15 @@ This is done to prevent malicious users from adjusting their script and improvin
 #### Forbidden
 ##### SecurityForbidden
 #### NotFound
-#### Unauthorization *
+#### Unauthorized
+An unauthorized request.
+
 ### ServerError
-#### FatalError *
+#### FatalError
+Represents a PHP fatal error as an exception that can be handled like other exceptions.
+
+It encapsulates an error retrieved using `last_get_error`, often being used in a `register_shutdown_function` to handle fatal error.
+
 #### NotImplemented
 #### ProgramError
 #### ServiceError

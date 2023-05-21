@@ -28,9 +28,25 @@ class ServiceError extends ServerError
         return $this->service;
     }
 
+    /**
+     * Set the name of the service that caused the error
+     *
+     * @return static
+     */
     public function setService(string $service)
     {
         $this->service = $service;
         return $this;
+    }
+
+    public function getContext()
+    {
+        $context = parent::getContext();
+        Helper::assignContext(
+            $context,
+            'service',
+            $this->getService()
+        );
+        return $context;
     }
 }

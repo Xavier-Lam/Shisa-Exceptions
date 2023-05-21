@@ -21,7 +21,8 @@ class ClientErrorTest extends TestCase
     {
         $exception = ClientError::create();
         $possibility = 50;
-        $exception->setPossibility($possibility);
+        $chain = $exception->setPossibility($possibility);
+        $this->assertSame($exception, $chain);
         $this->assertEquals($possibility, $exception->getPossibility());
     }
 
